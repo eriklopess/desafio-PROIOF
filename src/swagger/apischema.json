@@ -1,3 +1,306 @@
 {
-    
-}
+    "openapi": "3.0.3",
+    "info": {
+      "title": "ProIOT - Desenvolvedor Backend",
+      "version": "1.0"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3000"
+      }
+    ],
+    "tags": [
+      {
+        "name": "device",
+        "description": "Everything about your Pets",
+        "externalDocs": {
+          "description": "Find out more",
+          "url": "http://swagger.io"
+        }
+      }
+    ],
+    "paths": {
+      "/devices/{deviceId}": {
+        "put": {
+          "tags": [
+            "device"
+          ],
+          "summary": "Update a device by id",
+          "description": "Update a device by Id",
+          "operationId": "updateDevice",
+          "parameters": [
+            {
+              "name": "deviceId",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Device"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Device"
+                }
+              },
+              "application/x-www-form-urlencoded": {
+                "schema": {
+                  "$ref": "#/components/schemas/Device"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful operation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Device"
+                  }
+                },
+                "application/xml": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Device"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Device not found"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "device"
+          ],
+          "summary": "Find device by ID",
+          "description": "Returns a single device",
+          "operationId": "getDeviceById",
+          "parameters": [
+            {
+              "name": "deviceId",
+              "in": "path",
+              "description": "ID of device to return",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Device"
+                  }
+                },
+                "application/xml": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Device"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Pet not found"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "device"
+          ],
+          "summary": "Deletes a pet",
+          "description": "delete a pet",
+          "operationId": "deletePet",
+          "parameters": [
+            {
+              "name": "deviceId",
+              "in": "path",
+              "description": "ID of device to return",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "404": {
+              "description": "Device not found."
+            }
+          }
+        }
+      },
+      "/devices": {
+        "post": {
+          "tags": [
+            "device"
+          ],
+          "summary": "Add a new device",
+          "description": "Add a new device",
+          "operationId": "addDevice",
+          "requestBody": {
+            "description": "Create a new device",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Device"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Device"
+                }
+              },
+              "application/x-www-form-urlencoded": {
+                "schema": {
+                  "$ref": "#/components/schemas/Device"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "201": {
+              "description": "Successful operation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Device"
+                  }
+                },
+                "application/xml": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Device"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "device"
+          ],
+          "summary": "Get all devices",
+          "description": "Get all devices in database",
+          "operationId": "readDevices",
+          "responses": {
+            "200": {
+              "description": "successful operation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Device"
+                    }
+                  }
+                },
+                "application/xml": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Device"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Device": {
+          "required": [
+            "name",
+            "status"
+          ],
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string",
+              "example": "Freezer"
+            },
+            "informations": {
+              "type": "object",
+              "properties": {
+                "temperature": {
+                  "type": "string",
+                  "example": "10°C"
+                },
+                "battery": {
+                  "type": "string",
+                  "example": "100.00%"
+                },
+                "humidity": {
+                  "type": "string",
+                  "example": "100%"
+                },
+                "luminosity": {
+                  "type": "string",
+                  "example": "500lm"
+                }
+              },
+              "xml": {
+                "wrapped": true
+              },
+              "items": {
+                "type": "string",
+                "xml": {
+                  "name": "photoUrl"
+                }
+              }
+            },
+            "status": {
+              "type": "string",
+              "enum": [
+                "Online",
+                "Offline"
+              ]
+            }
+          },
+          "xml": {
+            "name": "device"
+          }
+        }
+      },
+      "requestBodies": {
+        "Device": {
+          "description": "Device object that needs to be added to the store",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Device"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Device"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
