@@ -1,6 +1,6 @@
 import { UpdateQuery } from 'mongoose';
 import { ZodError } from 'zod';
-import Model from '../Models/Model';
+import Model from '../Models/MongoModel';
 
 export interface ServiceError {
   error: ZodError;

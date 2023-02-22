@@ -1,5 +1,5 @@
 import { Model as MongooseModel, Document, UpdateQuery } from 'mongoose';
-import { Model } from '../interfaces/Model.interface';
+import Model from '../Interfaces/Model.interface';
 
 export default abstract class MongoModel<T> implements Model<T> {
     protected model: MongooseModel<T & Document>;

@@ -13,6 +13,7 @@ export interface RequestWithBody<T> extends Request {
 export enum ControllerErrors {
     internal = 'Internal server error.',
     badRequest = 'Bad request.',
+    notFound = 'Not found.',
   }
 
 export default abstract class Controller<T> {

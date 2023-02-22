@@ -4,6 +4,7 @@ import { readFile } from 'fs/promises';
 
 import connectToDatabase from './connection';
 import path from 'path';
+import helmet from 'helmet';
 class App {
   public app: express.Application;
 
@@ -11,7 +12,7 @@ class App {
     this.app = express();
     this.app.disable('x-powered-by');
     this.app.use(express.json());
-    this.app.use('/files', express.static('uploads'));
+    this.app.use(helmet());
     this.setupSwagger();
   }
 
@@ -27,7 +28,7 @@ class App {
   }
 
   private async setupSwagger(): Promise<void> {
-    const json = JSON.parse(await readFile(path.resolve(__dirname, '..', 'config', 'apischema.json'), 'utf8'));
+    const json = JSON.parse(await readFile(path.resolve(__dirname, '..', 'swagger', 'apischema.json'), 'utf8'));
     this.app.use('/docs', swaggerUi.serve, swaggerUi.setup(json));
   }
 
