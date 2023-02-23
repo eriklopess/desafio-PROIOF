@@ -28,7 +28,7 @@ class App {
   }
 
   private async setupSwagger(): Promise<void> {
-    const json = JSON.parse(await readFile(path.resolve(__dirname, '..', 'swagger', 'apischema.json'), 'utf8'));
+    const json = JSON.parse(await readFile(path.resolve(__dirname, '..', 'docs', 'apischema.json'), 'utf8'));
     this.app.use('/docs', swaggerUi.serve, swaggerUi.setup(json));
   }
 

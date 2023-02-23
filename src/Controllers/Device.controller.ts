@@ -67,12 +67,13 @@ export default class DeviceController extends Controller<Device> {
     delete = async (req: Request, res: Response<ResponseError | Device>): Promise<typeof res> => {
         try {
             const device = await this.service.delete(req.params.id);
+            console.log(device);
             if (!device)
                 return res.status(404).json({
                     error: this.errors.notFound
                 });
 
-            return res.status(200).json(device);
+            return res.status(204).end();
         } catch (error) {
             return res.status(500).json({
                 error: this.errors.internal

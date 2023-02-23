@@ -2,7 +2,7 @@ import { Model as MongooseModel, Document, UpdateQuery } from 'mongoose';
 import Model from '../Interfaces/Model.interface';
 
 export default abstract class MongoModel<T> implements Model<T> {
-    protected model: MongooseModel<T & Document>;
+    public model: MongooseModel<T & Document>;
 
     constructor(model: MongooseModel<T & Document>) {
         this.model = model;
@@ -19,8 +19,4 @@ export default abstract class MongoModel<T> implements Model<T> {
 
     delete = async (id: string): Promise<T | null> => this.model.findByIdAndRemove(({ _id: id }));
 
-    findByEmail = async (email: string): Promise<T | null> => this.model.findOne({
-        email,
-        active: true
-    });
 }
