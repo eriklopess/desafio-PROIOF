@@ -12,7 +12,7 @@
     "tags": [
       {
         "name": "device",
-        "description": "Everything about your Pets",
+        "description": "Everything about your devices",
         "externalDocs": {
           "description": "Find out more",
           "url": "http://swagger.io"
