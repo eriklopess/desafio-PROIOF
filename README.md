@@ -57,6 +57,8 @@ Agora que você inseriu todas as váriaveis só vamos precisar ligar o servidor 
 
 Se você recebeu esta mensagem em seu console `Server is running on port ${PORT}`, seu servidor está online, caso você tenha recebido algum erro tente refazer os passos anteriores, ou verificar uma URI mongo.
 
+
+
 ## Testes
 
 Nesta aplicação eu fiz 17 testes automatizados, que verificam se todas as rotas estão funcionando corretamente.
@@ -81,4 +83,23 @@ Se o projeto estiver corretamente configurado é para aparecer a seguinte imagem
 ![App Screenshot](https://i.imgur.com/EmpRHNb.png)
 ## Documentação
 
-Você pode entrar na documentação do projeto na seguinte rota: `/docs`
+Você pode entrar na documentação das rotas da API REST na seguinte rota: `/docs`
+
+### WebSockets
+
+Agora vamos para o WebSocket do Projeto, ele se encontra na seguinte rota: `ws://localhost:${PORT}`.
+
+Não é possivel enviar dados através dele, já que o mesmo é somente o caminho para receber notificações quando um dispositivo é editado ou criado.
+
+Caso você criar um dispositivo novo enquanto estiver conectado ao WebSocket você receberá uma mensagem do servidor parecida com esta:
+
+![](https://i.imgur.com/Kp3xsLM.png)
+
+Mesma coisa caso você editar um dispositivo quando estiver conectado ao WebSocket
+
+![](https://i.imgur.com/xOkXEE8.png)
+
+
+# Arquivos de configuração.
+
+Todos os arquivos de configuração se encontram no email no qual este projeto foi enviado!
