@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import App from "../App/App";
 import { Device } from "../Interfaces/Device.interface";
 import DeviceService from "../Services/Device.service";
 import Controller, { RequestWithBody, ResponseError } from "./Controller";
@@ -14,7 +15,8 @@ export default class DeviceController extends Controller<Device> {
             const device = await this.service.create(req.body);
             if (device && "error" in device)
                 return res.status(400).json(device);
-            
+
+            App.WebSocketServer.emit("createDevice", device);
             return res.status(201).json(device);
         } catch (error) {
             return res.status(500).json({
@@ -55,7 +57,7 @@ export default class DeviceController extends Controller<Device> {
                 return res.status(404).json({
                     error: this.errors.notFound
                 });
-
+                App.WebSocketServer.emit("updateDevice", device);
             return res.status(200).json(device);
         } catch (error) {
             return res.status(500).json({
@@ -67,7 +69,6 @@ export default class DeviceController extends Controller<Device> {
     delete = async (req: Request, res: Response<ResponseError | Device>): Promise<typeof res> => {
         try {
             const device = await this.service.delete(req.params.id);
-            console.log(device);
             if (!device)
                 return res.status(404).json({
                     error: this.errors.notFound

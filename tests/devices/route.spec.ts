@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 import request from 'supertest';
-import App from '../../src/App/App';
 import { correctObject, incorrectObject } from './data';
 
 describe('/devices', () => {
