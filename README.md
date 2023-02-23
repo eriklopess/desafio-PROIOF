@@ -45,9 +45,11 @@ Logo após criar nosso arquivo deváriaveis de ambiente, você vai precisar abr
 Agora que você abriu o arquivo .env você precisará colocar as seguintes váriaveis:
 
 MONGO_DB_URI=<sua_uri_mongo>
-PORT=<sua_porta>
+PORT=3000
 
-*Obs: todas essas váriaveis são obrigatórias para o projeto iniciar!*
+*Obs: Todas essas váriaveis são obrigatórias para o projeto iniciar!*
+
+*Obs2: Caso opte por usar uma porta diferente de 3000, será necessário alterar manualmente no arquivo src/docs/apischema.json, para o swagger funcionar.*
 
 Agora que você inseriu todas as váriaveis só vamos precisar ligar o servidor do projeto, para isso só digitar o seguinte comando no mesmo bash que você estava usando:
 
@@ -87,7 +89,7 @@ Você pode entrar na documentação das rotas da API REST na seguinte rota: `/do
 
 ### WebSockets
 
-Agora vamos para o WebSocket do Projeto, ele se encontra na seguinte rota: `ws://localhost:${PORT}`.
+Agora vamos para o WebSocket do Projeto, ele se encontra na seguinte rota: `ws://localhost:3000`.
 
 Não é possivel enviar dados através dele, já que o mesmo é somente o caminho para receber notificações quando um dispositivo é editado ou criado.
 
