@@ -6,7 +6,7 @@
     },
     "servers": [
       {
-        "url": "https://deploy-proiof-production.up.railway.app/"
+        "url": "http://localhost:3000"
       }
     ],
     "tags": [

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node --experimental-vm-modules ./node_modules/.bin/jest",
+    "test": "jest",
     "start:dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules src/App/index.ts",
     "start": "ts-node src/App/index.ts"
   },
