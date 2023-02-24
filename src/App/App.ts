@@ -6,6 +6,7 @@ import connectToDatabase from './connection';
 import path from 'path';
 import helmet from 'helmet';
 import WebSocketServer from './WebSocketServer';
+
 class App {
   public app: express.Application;
   private server: http.Server;

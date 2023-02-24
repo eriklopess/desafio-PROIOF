@@ -9,7 +9,6 @@ export interface RequestWithBody<T> extends Request {
   body: T;
 }
 
-// eslint-disable-next-line no-shadow, no-unused-vars
 export enum ControllerErrors {
     internal = 'Internal server error.',
     badRequest = 'Bad request.',

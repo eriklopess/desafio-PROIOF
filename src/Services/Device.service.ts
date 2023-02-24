@@ -17,4 +17,5 @@ export default class DeviceService extends Service<Device> {
 
         return this.model.create(obj);
     }
+
 }

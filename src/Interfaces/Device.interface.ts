@@ -8,9 +8,9 @@ export const DeviceSchema = z.object({
     }),
     status: z.enum(['Online', 'Offline']).optional(),
     informations: z.object({
-        temperature: z.string().optional().refine((value) => value?.includes("°C"), {
+        temperature: z.string().refine((value) => value?.includes("°C"), {
             message: "Temperature must be in °C"
-        }),
+        }).optional(),
         humidity: z.string().refine((value) => {
             if (!value) return true;
             const number = Number(value.replace("%", ""));
@@ -21,7 +21,7 @@ export const DeviceSchema = z.object({
             message: "Humidity must be in %"
         }).optional(),
         luminosity: z.string().refine((value) => value.includes('lm')).optional(),
-        battery: z.string().regex(/^0*(100\.00|[0-9]?[0-9]\.[0-9]{2})%?$/).optional(),
+        battery: z.string().regex(/^0*(100\.00|[0-9]?[0-9]\.[0-9]{2})%?$/).optional(), 
     }),
 });
 
